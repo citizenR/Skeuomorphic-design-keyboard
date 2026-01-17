@@ -4,4 +4,4 @@
 
 - Screenshot
 
-![screenshot](sceenshot.png)
+![screenshot](./sceenshot.png)
