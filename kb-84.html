@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拟物键盘</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        /* 键盘容器 */
+        .keyboard-container {
+            background-color: #2d2d2d;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        /* 键盘主体 */
+        .keyboard {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin: 0 auto;
+        }
+
+        /* 键盘行 */
+        .key-row {
+            display: flex;
+            gap: 6px;
+            width: 100%;
+        }
+
+        /* 基本按键样式 */
+        .key {
+            background-color: #c7c3c0;
+            border-radius: 6px;
+            box-shadow:
+                inset 0 2px 3px rgba(255, 255, 255, 0.9),
+                0 5px 8px rgba(0, 0, 0, 0.3),
+                inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.1s ease;
+            position: relative;
+            user-select: none;
+        }
+
+        /* 按键按下效果 */
+        .key:active {
+            box-shadow:
+                inset 0 3px 5px rgba(0, 0, 0, 0.3),
+                0 2px 4px rgba(0, 0, 0, 0.1),
+                inset 0 -1px 2px rgba(255, 255, 255, 0.5);
+            transform: translateY(2px);
+        }
+
+        .key.red {
+            background-color: #d42a02;
+            box-shadow: rgba(0, 0, 0, 0.377) 10px 10px 8px,
+                #fb702c 2px 2px 10px 0px inset,
+                #d42a02 -4px -4px 1px 0px inset
+        }
+
+        .key.red:active {
+            box-shadow: rgba(0, 0, 0, 0.377) 0px 0px 0px, inset 0.5px 0.5px 4px #000000,
+                #d42a02 -3.2px -3.2px 8px 0px inset;
+        }
+
+        /* 按键尺寸 */
+        .key.normal {
+            width: 40px;
+            height: 40px;
+        }
+
+        .key.wide {
+            width: 58px;
+        }
+
+        .key.tab {
+            width: 70px;
+        }
+
+        .key.caps {
+            width: 87px;
+        }
+
+        .key.lshift {
+            width: 100px;
+        }
+
+        .key.rshift {
+            width: 74px;
+        }
+
+        .key.extra-wide {
+            width: 87px;
+        }
+
+        .key.super-wide {
+            width: 264px;
+        }
+
+        /* 功能键 */
+        .key.function {
+            font-size: 11px;
+            color: #666;
+        }
+
+        /* 控制键 */
+        .key.control {
+            font-size: 12px;
+            color: #555;
+        }
+
+        /* 方向键 */
+        .key.arrow {
+            font-size: 16px;
+            color: #444;
+        }
+
+        /* 导航键 */
+        .key.nav {
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="keyboard-container">
+        <div class="keyboard">
+            <!-- 功能键行 -->
+            <div class="key-row">
+                <div class="key normal function red">Esc</div>
+                <div class="key normal function">F1</div>
+                <div class="key normal function">F2</div>
+                <div class="key normal function">F3</div>
+                <div class="key normal function">F4</div>
+                <div class="key normal function">F5</div>
+                <div class="key normal function">F6</div>
+                <div class="key normal function">F7</div>
+                <div class="key normal function">F8</div>
+                <div class="key normal function">F9</div>
+                <div class="key normal function">F10</div>
+                <div class="key normal function">F11</div>
+                <div class="key normal function">F12</div>
+                <div class="key normal function">PrScr</div>
+                <div class="key normal function">ScrLk</div>
+                <div class="key normal function">Del</div>
+            </div>
+
+            <!-- 数字键行 -->
+            <div class="key-row">
+                <div class="key normal">`</div>
+                <div class="key normal">1</div>
+                <div class="key normal">2</div>
+                <div class="key normal">3</div>
+                <div class="key normal">4</div>
+                <div class="key normal">5</div>
+                <div class="key normal">6</div>
+                <div class="key normal">7</div>
+                <div class="key normal">8</div>
+                <div class="key normal">9</div>
+                <div class="key normal">0</div>
+                <div class="key normal">-</div>
+                <div class="key normal">=</div>
+                <div class="key extra-wide">Back</div>
+                <div class="key normal nav">Home</div>
+
+            </div>
+
+            <!-- QWERTY键行 -->
+            <div class="key-row">
+                <div class="key tab">Tab</div>
+                <div class="key normal">Q</div>
+                <div class="key normal">W</div>
+                <div class="key normal">E</div>
+                <div class="key normal">R</div>
+                <div class="key normal">T</div>
+                <div class="key normal">Y</div>
+                <div class="key normal">U</div>
+                <div class="key normal">I</div>
+                <div class="key normal">O</div>
+                <div class="key normal">P</div>
+                <div class="key normal">[</div>
+                <div class="key normal">]</div>
+                <div class="key wide">\</div>
+                <div class="key normal nav">End</div>
+            </div>
+
+            <!-- 主键盘行 -->
+            <div class="key-row">
+                <div class="key caps">Caps</div>
+                <div class="key normal">A</div>
+                <div class="key normal">S</div>
+                <div class="key normal">D</div>
+                <div class="key normal">F</div>
+                <div class="key normal">G</div>
+                <div class="key normal">H</div>
+                <div class="key normal">J</div>
+                <div class="key normal">K</div>
+                <div class="key normal">L</div>
+                <div class="key normal">;</div>
+                <div class="key normal">'</div>
+                <div class="key extra-wide red">Enter</div>
+                <div class="key normal nav">PgUp</div>
+
+            </div>
+
+            <!-- Shift键行 -->
+            <div class="key-row">
+                <div class="key lshift">Shift</div>
+                <div class="key normal">Z</div>
+                <div class="key normal">X</div>
+                <div class="key normal">C</div>
+                <div class="key normal">V</div>
+                <div class="key normal">B</div>
+                <div class="key normal">N</div>
+                <div class="key normal">M</div>
+                <div class="key normal">,</div>
+                <div class="key normal">.</div>
+                <div class="key normal">/</div>
+                <div class="key rshift">Shift</div>
+                <!-- 方向键 - 上 -->
+                <div class="key normal arrow">↑</div>
+                <div class="key normal nav">PgDn</div>
+
+            </div>
+
+            <!-- 控制键行（75键布局，整合导航键和方向键） -->
+            <div class="key-row">
+                <div class="key wide control">Ctrl</div>
+                <div class="key wide control">Win</div>
+                <div class="key wide control">Alt</div>
+                <div class="key super-wide control">Space</div>
+                <div class="key normal control">Alt</div>
+                <div class="key normal control">Fn</div>
+                <div class="key normal control">Ctrl</div>
+                <div class="key normal arrow">←</div>
+                <div class="key normal arrow">↓</div>
+                <div class="key normal arrow">→</div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
